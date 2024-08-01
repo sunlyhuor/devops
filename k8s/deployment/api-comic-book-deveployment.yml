@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-comic-book-deveployment
+  labels:
+    app: api-comic-book-label
+spec:
+  replicas: 3  # Number of desired replicas
+  selector:
+    matchLabels:
+      app: api-comic-book-label
+  template:
+    metadata:
+      labels:
+        app: api-comic-book-label
+    spec:
+      containers:
+        - name: api-comic-book-container
+          image: leehuor/api-comic-book:latest  # Image to be used for the container

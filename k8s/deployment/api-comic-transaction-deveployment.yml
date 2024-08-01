@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-comic-transaction-deveployment
+  labels:
+    app: api-comic-transaction-label
+spec:
+  replicas: 3  # Number of desired replicas
+  selector:
+    matchLabels:
+      app: api-comic-transaction-label
+  template:
+    metadata:
+      labels:
+        app: api-comic-transaction-label
+    spec:
+      containers:
+        - name: api-comic-transaction-container
+          image: leehuor/api-comic-transaction:latest  # Image to be used for the container

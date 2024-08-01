@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-comic-gateway-deveployment
+  labels:
+    app: api-comic-gateway-label
+spec:
+  replicas: 3  # Number of desired replicas
+  selector:
+    matchLabels:
+      app: api-comic-gateway-label
+  template:
+    metadata:
+      labels:
+        app: api-comic-gateway-label
+    spec:
+      containers:
+        - name: api-comic-gateway-container
+          image: leehuor/api-comic-gateway:latest  # Image to be used for the container
+          ports:
+            - containerPort: 3000  # Port that the container exposes

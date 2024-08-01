@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-comic-auth-deveployment
+  labels:
+    app: api-comic-auth-label
+spec:
+  replicas: 3  # Number of desired replicas
+  selector:
+    matchLabels:
+      app: api-comic-auth-label
+  template:
+    metadata:
+      labels:
+        app: api-comic-auth-label
+    spec:
+      containers:
+        - name: api-comic-auth-container
+          image: leehuor/api-comic-auth:latest  # Image to be used for the container
