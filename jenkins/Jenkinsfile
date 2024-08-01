@@ -35,22 +35,23 @@ pipeline {
                      withCredentials([usernamePassword(credentialsId: 'docker-hub-id', passwordVariable: 'PASS', usernameVariable: 'USER')]) {
                         sh'docker login -u $USER -p $PASS'
                         sh '''
-                            sudo docker build -t $USER/api-comic-gateway:latest -f Dockerfile.api .
-                            sudo docker build -t $USER/api-comic-auth:latest -f Dockerfile.auth .
-                            sudo docker build -t $USER/api-comic-book:latest -f Dockerfile.book .
-                            sudo docker build -t $USER/api-comic-transaction:latest -f Dockerfile.transaction .
-                            sudo docker push $USER/api-comic-gateway:latest
-                            sudo docker push $USER/api-comic-auth:latest
-                            sudo docker push $USER/api-comic-book:latest
-                            sudo docker push $USER/api-comic-transaction:latest
-                            sudo docker rmi -f $USER/api-comic-gateway:latest
-                            sudo docker rmi -f $USER/api-comic-auth:latest
-                            sudo docker rmi -f $USER/api-comic-book:latest
-                            sudo docker rmi -f $USER/api-comic-transaction:latest
+                             docker build -t $USER/api-comic-gateway:latest -f Dockerfile.api .
+                             docker build -t $USER/api-comic-auth:latest -f Dockerfile.auth .
+                             docker build -t $USER/api-comic-book:latest -f Dockerfile.book .
+                             docker build -t $USER/api-comic-transaction:latest -f Dockerfile.transaction .
+                             docker push $USER/api-comic-gateway:latest
+                             docker push $USER/api-comic-auth:latest
+                             docker push $USER/api-comic-book:latest
+                             docker push $USER/api-comic-transaction:latest
+                             docker rmi -f $USER/api-comic-gateway:latest
+                             docker rmi -f $USER/api-comic-auth:latest
+                             docker rmi -f $USER/api-comic-book:latest
+                             docker rmi -f $USER/api-comic-transaction:latest
                         '''
                     }
                 }
             }   
         }
-    }
+    }    
+
 }
