@@ -38,10 +38,10 @@ pipeline {
                             sh'docker login -u $USER -p $PASS'
                     }
                     sh '''
-                        docker build -t api-comic-gateway:latest ./Dockerfile.api
-                        docker build -t api-comic-auth:latest ./Dockerfile.auth
-                        docker build -t api-comic-book:latest ./Dockerfile.book
-                        docker build -t api-comic-transaction:latest ./Dockerfile.transaction
+                        docker build -t api-comic-gateway:latest -f Dockerfile.api .
+                        docker build -t api-comic-auth:latest -f Dockerfile.auth .
+                        docker build -t api-comic-book:latest -f Dockerfile.book .
+                        docker build -t api-comic-transaction:latest -f Dockerfile.transaction .
                         docker push api-comic-gateway:latest
                         docker push api-comic-auth:latest
                         docker push api-comic-book:latest
