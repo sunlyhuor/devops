@@ -27,13 +27,26 @@ pipeline {
                     sh'rm -r env'
                     sh'git clone https://$USER:$SECRET@gitlab.com/huorgroup/khcomic/khcomic-production-env.git env'
                     sh'cp env/.env ./'
+                    sh'rm -r env'
                 }
             }   
         }
-        stage('Configuration') {
+        stage('Build images') {
             steps{
                 script {
-                    sh 'cat .env'
+                     withCredentials([usernamePassword(credentialsId: 'docker-hub-id', passwordVariable: 'PASS', usernameVariable: 'USER')]) {
+                            sh'docker login -u $USER -p $PASS'
+                    }
+                    sh '''
+                        docker build -t api-comic-gateway:latest ./Dockerfile.api
+                        docker build -t api-comic-auth:latest ./Dockerfile.auth
+                        docker build -t api-comic-book:latest ./Dockerfile.book
+                        docker build -t api-comic-transaction:latest ./Dockerfile.transaction
+                        docker push api-comic-gateway:latest
+                        docker push api-comic-auth:latest
+                        docker push api-comic-book:latest
+                        docker push api-comic-transaction:latest
+                    '''
                 }
             }   
         }
