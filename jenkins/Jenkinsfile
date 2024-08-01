@@ -24,7 +24,6 @@ pipeline {
             steps{
                 withCredentials([usernamePassword(credentialsId: 'gitlab-id', passwordVariable: 'SECRET', usernameVariable: 'USER')]) {
                     sh'echo $USER'
-                    sh'rm -r env'
                     sh'git clone https://$USER:$SECRET@gitlab.com/huorgroup/khcomic/khcomic-production-env.git env'
                     sh'cp env/.env ./'
                 }
