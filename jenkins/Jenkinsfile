@@ -27,7 +27,6 @@ pipeline {
                     sh'rm -r env'
                     sh'git clone https://$USER:$SECRET@gitlab.com/huorgroup/khcomic/khcomic-production-env.git env'
                     sh'cp env/.env ./'
-                    sh'rm -r env'
                 }
             }   
         }
