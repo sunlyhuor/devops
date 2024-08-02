@@ -6,7 +6,7 @@
   tasks:
   - name: Controll master 1 run ansible project
     shell: |
-      ansible apply -f /home/sunlyhuor/devops/k8s/deployment
-      ansible apply -f /home/sunlyhuor/devops/k8s/service/api-comic-gateway-service.yaml
-      ansible apply -f /home/sunlyhuor/devops/k8s/ingress/Clusterissuer.yaml
-      ansible apply -f /home/sunlyhuor/devops/k8s/ingress/api-comic-gateway-ingress.yaml
+      ansible apply -f /home/sunlyhuor/devops/k8s/deployment \
+      ansible apply -f /home/sunlyhuor/devops/k8s/service/api-comic-gateway-service.yaml \
+      ansible apply -f /home/sunlyhuor/devops/k8s/ingress/Clusterissuer.yaml \
+      ansible apply -f /home/sunlyhuor/devops/k8s/ingress/api-comic-gateway-ingress.yaml \
