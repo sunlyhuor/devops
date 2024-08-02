@@ -9,5 +9,6 @@
       kubectl apply -f /home/sunlyhuor/devops/k8s/service/api-comic-gateway-service.yaml
       kubectl apply -f /home/sunlyhuor/devops/k8s/service/api-comic-mongo-service.yaml
       kubectl apply -f /home/sunlyhuor/devops/k8s/service/api-comic-postgres-service.yaml
+      kubectl apply -f /home/sunlyhuor/devops/k8s/service/api-comic-rabbitmq-service.yaml
       kubectl apply -f /home/sunlyhuor/devops/k8s/ingress/Clusterissuer.yaml
       kubectl apply -f /home/sunlyhuor/devops/k8s/ingress/api-comic-gateway-ingress.yaml
