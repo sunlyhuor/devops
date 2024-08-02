@@ -70,10 +70,7 @@ pipeline {
         stage('Deploy with ansible'){
             steps{
                 sh'''
-                    ansible apply -f $HOME/devops/k8s/deployment
-                    ansible apply -f $HOME/devops/k8s/service/api-comic-gateway-service.yaml
-                    ansible apply -f $HOME/devops/k8s/ingress/Clusterissuer.yaml
-                    ansible apply -f $HOME/devops/k8s/ingress/api-comic-gateway-ingress.yaml
+                    ansible-playbook -i $HOME/devops/ansible/hosts.ini $HOME/devops/ansible/control.yaml
                 '''
             }
         }
