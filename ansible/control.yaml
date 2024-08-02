@@ -1,12 +1,11 @@
----
 - name: Controll master 1
   hosts: all
   become: true
 
   tasks:
-  - name: Controll master 1 run ansible project
+  - name: Run kubectl apply commands
     shell: |
-      kubectl apply -f /home/sunlyhuor/devops/k8s/deployment \
-      kubectl apply -f /home/sunlyhuor/devops/k8s/service/api-comic-gateway-service.yaml \
-      kubectl apply -f /home/sunlyhuor/devops/k8s/ingress/Clusterissuer.yaml \
-      kubectl apply -f /home/sunlyhuor/devops/k8s/ingress/api-comic-gateway-ingress.yaml \
+      kubectl apply -f /home/sunlyhuor/devops/k8s/deployment
+      kubectl apply -f /home/sunlyhuor/devops/k8s/service/api-comic-gateway-service.yaml
+      kubectl apply -f /home/sunlyhuor/devops/k8s/ingress/Clusterissuer.yaml
+      kubectl apply -f /home/sunlyhuor/devops/k8s/ingress/api-comic-gateway-ingress.yaml
