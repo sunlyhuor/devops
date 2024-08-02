@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-comic-postgres-deveployment
+  labels:
+    app: api-comic-postgres-label
+spec:
+  replicas: 1 # Number of desired replicas
+  selector:
+    matchLabels:
+      app: api-comic-postgres-label
+  template:
+    metadata:
+      labels:
+        app: api-comic-postgres-label
+    spec:
+      restartPolicy: Always
+      containers:
+        - name: api-comic-postgres-container
+          image: postgres:14 # Image to be used for the container
+          env:
+          - name: POSTGRES_PASSWORD
+            value: "admin123"
+          - name: POSTGRES_USER
+            value: "admin"
+          - name: POSTGRES_DB
+            value: "transactions"
+          ports:
+          - containerPort: 5432

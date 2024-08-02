@@ -52,6 +52,27 @@ pipeline {
                 }
             }   
         }
+        state('Clone project'){
+            steps{
+                withCredentials([usernamePassword(credentialsId: 'github-id', passwordVariable: 'SECRET', usernameVariable: 'USER')]) {
+                    sh'''
+                        if [ -d "$HOME/devops" ]; then
+                            echo "Cloned already"
+                        else
+                            git clone https://$USER:$SECRET@github.com/sunlyhuor/devops.git devops
+                        fi
+
+                    '''
+                }
+            }
+        }
+        stage('Deploy with ansible'){
+            steps{
+                sh'''
+                    cat .env
+                '''
+            }
+        }
     }    
 
 }
