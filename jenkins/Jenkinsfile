@@ -52,7 +52,7 @@ pipeline {
                 }
             }   
         }
-        state('Clone project'){
+        stage('Clone project k8s'){
             steps{
                 withCredentials([usernamePassword(credentialsId: 'github-id', passwordVariable: 'SECRET', usernameVariable: 'USER')]) {
                     sh'''
