@@ -57,9 +57,10 @@ pipeline {
                 withCredentials([usernamePassword(credentialsId: 'github-id', passwordVariable: 'SECRET', usernameVariable: 'USER')]) {
                     sh'''
                         if [ -d "$HOME/devops" ]; then
-                            echo "Cloned already"
+                            rm -r $HOME/devops
+                            git clone https://$USER:$SECRET@github.com/sunlyhuor/devops.git $HOME/devops
                         else
-                            git clone https://$USER:$SECRET@github.com/sunlyhuor/devops.git devops
+                            git clone https://$USER:$SECRET@github.com/sunlyhuor/devops.git $HOME/devops
                         fi
 
                     '''
@@ -69,6 +70,7 @@ pipeline {
         stage('Deploy with ansible'){
             steps{
                 sh'''
+
                 '''
             }
         }
