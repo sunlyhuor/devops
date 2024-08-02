@@ -7,6 +7,4 @@ metadata:
 spec:
   selector:
     app: api-comic-book-label
-  ports:
-  - protocol: TCP
   type: ClusterIP #NodePort|LoadBalancer|ExternalName

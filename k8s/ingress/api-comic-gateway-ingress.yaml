@@ -18,6 +18,6 @@ spec:
           pathType: Prefix
           backend:
             service:
-              name: api-comic-service
+              name: api-comic-gateway-service
               port:
                 number: 80
