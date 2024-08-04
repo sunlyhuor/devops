@@ -15,13 +15,6 @@ pipeline {
                 cleanWs();
             }
         }
-        stage('Delete ansibe'){
-            steps{
-                sh'''
-                    ansible-playbook -i $HOME/devops/ansible/hosts.ini $HOME/devops/ansible/delete-control.yaml
-                '''       
-            }
-        }
         stage('Clone project') {
             steps{
                 git branch: 'api-gateway', credentialsId: 'gitlab-id', url: 'https://gitlab.com/huorgroup/khcomic/kh-comic-api.git'
