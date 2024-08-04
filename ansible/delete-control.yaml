@@ -1,0 +1,14 @@
+- name: Controll master 1
+  hosts: all
+  become: true
+
+  tasks:
+  - name: Run kubectl apply commands
+    shell: |
+      kubectl delete -f /home/sunlyhuor/devops/k8s/deployment
+      kubectl delete -f /home/sunlyhuor/devops/k8s/service/api-comic-gateway-service.yaml
+      kubectl delete -f /home/sunlyhuor/devops/k8s/service/api-comic-mongo-service.yaml
+      kubectl delete -f /home/sunlyhuor/devops/k8s/service/api-comic-postgres-service.yaml
+      kubectl delete -f /home/sunlyhuor/devops/k8s/service/api-comic-rabbitmq-service.yaml
+      kubectl delete -f /home/sunlyhuor/devops/k8s/ingress/Clusterissuer.yaml
+      kubectl delete -f /home/sunlyhuor/devops/k8s/ingress/api-comic-gateway-ingress.yaml
