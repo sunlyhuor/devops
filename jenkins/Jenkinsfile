@@ -70,7 +70,7 @@ pipeline {
         stage('Deploy with ansible'){
             steps{
                 sh'''
-                    ansible-playbook -i $HOME/devops/ansible/hosts.ini $HOME/devops/ansible/control.yaml
+                    ansible-playbook -i $HOME/devops/ansible/hosts.ini $HOME/devops/ansible/control.yaml --ssh-common-args='-o StrictHostKeyChecking=no'
                 '''
             }
         }
