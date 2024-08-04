@@ -25,3 +25,9 @@ spec:
             value: "admin123"
           ports:
           - containerPort: 27017
+          volumeMount:
+          - name: my-data
+            path: /data/db
+      volumes:
+      - name: my-data
+        hostPath: /opt/nfs/data/mongodb
